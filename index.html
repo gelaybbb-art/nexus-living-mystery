@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="NEXUS: The Living Mystery — a cinematic browser detective game.">
+  <title>NEXUS // The Living Mystery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="scanlines"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="NEXUS home" id="homeBrand">
+      <span class="brand-mark">N<span>×</span></span>
+      <span><strong>NEXUS</strong><small>INTELLIGENCE DIVISION</small></span>
+    </a>
+    <div class="top-status"><span class="status-dot"></span> SYSTEM ONLINE <span class="top-divider">/</span> <span id="clock">LOCAL TIME</span></div>
+    <button class="icon-button" id="soundToggle" title="Toggle interface sounds" aria-label="Toggle interface sounds">♫ <span id="soundLabel">SOUND OFF</span></button>
+  </header>
+
+  <main id="app">
+    <section class="screen active" id="introScreen">
+      <div class="intro-layout">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> CASE FILE 001 · CLASSIFIED</div>
+          <p class="pretitle">THE FUTURE HAS ALREADY TESTIFIED.</p>
+          <h1>THE LIVING<br><em>MYSTERY</em></h1>
+          <p class="lead">A murder predicted. A victim not yet dead. One investigator willing to question the machine that knows everything.</p>
+          <div class="intro-meta">
+            <div><span class="meta-label">YEAR</span><strong>2089</strong></div>
+            <div><span class="meta-label">THREAT LEVEL</span><strong class="red-text">CRITICAL</strong></div>
+            <div><span class="meta-label">CASE STATUS</span><strong>UNRESOLVED</strong></div>
+          </div>
+          <button class="primary-button" id="beginButton"><span>INITIALIZE INVESTIGATION</span><b>↗</b></button>
+          <button class="text-button" id="continueButton" hidden>↳ CONTINUE SAVED INVESTIGATION</button>
+          <p class="microcopy">SINGLE-PLAYER EXPERIENCE <span>•</span> AUTOSAVE ENABLED <span>•</span> YOUR CHOICES MATTER</p>
+        </div>
+        <div class="intro-art" aria-label="Futuristic city illustration">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="city-grid"></div>
+          <div class="city-sun"></div>
+          <div class="city-silhouette"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="art-crosshair cross-a"></div><div class="art-crosshair cross-b"></div>
+          <div class="art-label label-top">NEXUS PREDICTION ENGINE <span>ACTIVE</span></div>
+          <div class="art-label label-bottom"><span>NO. 001</span> // EASTERN SECTOR <b>2089.11.04</b></div>
+          <div class="art-warning"><span>!</span><div><strong>ANOMALY DETECTED</strong><small>Prediction conflicts with reality</small></div></div>
+        </div>
+      </div>
+      <div class="bottom-strip"><span>RESTRICTED ACCESS // AUTHORIZED PERSONNEL ONLY</span><span>TRUST NOTHING. VERIFY EVERYTHING.</span><span>BUILD 1.0.0 <i>●</i></span></div>
+    </section>
+
+    <section class="screen" id="gameScreen">
+      <div class="game-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> INVESTIGATION IN PROGRESS</div><h2>CASE 001 <span>//</span> BEFORE THE BODY</h2></div>
+        <div class="case-status"><span class="status-dot red-dot"></span><span id="caseStatusText">OPEN CASE</span><small id="chapterText">CHAPTER 01 / 04</small></div>
+      </div>
+      <div class="game-grid">
+        <aside class="left-rail">
+          <div class="rail-title">CASE CONTROL <span>● LIVE</span></div>
+          <button class="rail-item selected" data-panel="overview"><span class="rail-icon">◈</span> Case overview <b>01</b></button>
+          <button class="rail-item" data-panel="evidence"><span class="rail-icon">⌕</span> Evidence vault <b id="evidenceCount">00</b></button>
+          <button class="rail-item" data-panel="suspects"><span class="rail-icon">♙</span> Persons of interest <b>03</b></button>
+          <button class="rail-item" data-panel="journal"><span class="rail-icon">≡</span> Field journal <b>↗</b></button>
+          <div class="rail-progress"><div class="rail-title">INVESTIGATION SCORE</div><div class="score-line"><strong id="scoreValue">000</strong><span>/ 1000</span></div><div class="progress-track"><i id="scoreBar"></i></div><small id="scoreHint">Every detail matters.</small></div>
+          <button class="reset-button" id="resetButton">↻ RESTART CASE</button>
+        </aside>
+        <section class="case-panel">
+          <div class="panel-top"><span id="panelKicker">CASE BRIEFING</span><span id="chapterBadge">CH. 01</span></div>
+          <div id="panelContent"></div>
+        </section>
+        <aside class="right-rail">
+          <div class="rail-title">NEXUS FEED <span class="feed-live">LIVE</span></div>
+          <div class="feed-alert"><div class="feed-alert-icon">!</div><div><strong>PREDICTION MISMATCH</strong><p>System confidence: 99.7%</p></div></div>
+          <div class="feed-item"><time>23:41:08</time><p>Case file imported from the Central Precognition Network.</p></div>
+          <div class="feed-item"><time>23:41:10</time><p>Victim status conflict detected in the municipal registry.</p></div>
+          <div class="feed-item" id="latestFeed"><time>23:41:12</time><p>Awaiting investigator input.</p></div>
+          <div class="feed-rule"></div>
+          <div class="rail-title">MISSION PARAMETERS</div>
+          <div class="parameter"><span>PRIMARY</span><strong>Identify the anomaly</strong></div>
+          <div class="parameter"><span>SECONDARY</span><strong>Preserve evidence</strong></div>
+          <div class="parameter"><span>DO NOT</span><strong class="red-text">Trust predictions blindly</strong></div>
+          <div class="nexus-orb"><div class="orb-core"></div><span>NEXUS AI</span><small>OBSERVING</small></div>
+        </aside>
+      </div>
+      <div class="bottom-strip game-footer"><span>ENCRYPTED CHANNEL // SECURE CONNECTION</span><span>PROGRESS SAVES AUTOMATICALLY ON THIS DEVICE</span><span id="saveStatus">SAVED <i>●</i></span></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+      <div class="eyebrow"><span class="eyebrow-line"></span> NEXUS ANALYSIS</div>
+      <h3 id="modalTitle">Evidence analysis</h3>
+      <div id="modalBody"></div>
+      <button class="primary-button compact" id="modalAction"><span>ACKNOWLEDGE</span><b>↗</b></button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
